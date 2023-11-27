@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDENT CONCERN PORTAL</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <form onsubmit="sendEmail(); reset(); return false;">
+      <i class="fas fa-paper-plane"></i>
+
+      <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" id="name" placeholder="Enter your name">
+      </div>
+
+      <div class="input-group">
+        <label>Phone No.</label>
+        <input type="tel" id="phone" placeholder="123 456 7890">
+      </div>
+
+      <div class="input-group">
+        <label>Email Id</label>
+        <input type="email" id="email" placeholder="Enter Email">
+      </div>  
+
+      <div class="input-group">
+        <label>YOUR CONCERN</label>
+        <textarea id="message" rows="5" placeholder="Enter your message"></textarea>
+      </div>
+
+      <button>Submit</button>
+    </form>
+  </div>
+
+  <div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+      function sendEmail() {
+        Email.send({
+          secureToken: "f0bd50ad-0e41-4212-bf7b-d8956b7375d0",
+          To: 'srijanya.alcheringa@gmail.com',
+          From: document.getElementById("email").value,
+          Subject: "Student concern enquiry",
+          Body: "Name:" + document.getElementById("name").value + "<br/>Phone No:" + document.getElementById("phone").value + "<br/>Email:" + document.getElementById("email").value + "<br/>Message:" + document.getElementById("message").value
+        }).then(
+          message => alert("message sent securely")
+        );
+      }
+    </script>
+  </div>
+</body>
+</html>
